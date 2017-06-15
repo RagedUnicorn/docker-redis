@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis:
+    build: .
+    image: com.ragedunicorn/redis:1.0-dev
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/sh
+    labels:
+      com.ragedunicorn.redis.environment: "dev"
+      com.ragedunicorn.redis.description: "Redis container"
+volumes:
+  redis_data: {}

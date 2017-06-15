@@ -1,0 +1,14 @@
+version: '3'
+services:
+  redis:
+    build: .
+    image: com.ragedunicorn/redis:1.0-stable
+    volumes:
+      - redis_data:/data
+    expose:
+      - "6379"
+    labels:
+      com.ragedunicorn.redis.environment: "prod"
+      com.ragedunicorn.redis.description: "Redis container"
+volumes:
+  redis_data: {}
