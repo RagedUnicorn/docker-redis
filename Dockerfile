@@ -31,6 +31,7 @@ RUN \
   apk add --no-cache su-exec="${SU_EXEC_VERSION}"
 
 RUN \
+  set -ex; \
   apk add --no-cache --virtual .build-deps \
     coreutils="${COREUTILS_VERSION}" \
     gcc="${GCC_VERSION}" \
