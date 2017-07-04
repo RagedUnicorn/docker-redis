@@ -15,6 +15,23 @@ exposed to linked containers. Meaning a connection with a client to the database
 docker-compose up -d
 ```
 
+**Note:** You will get a warning that external secrets are not supported by docker-compose. The container will ignore this and setup redis unprotected. For a production deployment a stack should be deployed. The secret will then be taken into account and redis will be setup accordingly. You can also set a password in `config/redis.conf requirepass` but this is not recommended for production.
+
+Join a swarm
+```
+docker swarm init
+```
+
+Setup docker secret for the service
+```
+echo "some_password" | docker secret create com.ragedunicorn.redis.password -
+```
+
+Deploy stack
+```
+docker stack deploy --compose-file=docker-compose.yml [stackname]
+```
+
 ### Stop container
 
 To stop all services from the docker-compose file

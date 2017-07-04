@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 services:
   redis:
     build: .
@@ -7,8 +7,13 @@ services:
       - redis_data:/data
     expose:
       - "6379"
+    secrets:
+        - com.ragedunicorn.redis.password
     labels:
       com.ragedunicorn.redis.environment: "prod"
       com.ragedunicorn.redis.description: "Redis container"
 volumes:
   redis_data: {}
+secrets:
+  com.ragedunicorn.redis.password:
+    external: true
