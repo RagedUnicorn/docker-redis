@@ -2,7 +2,7 @@ version: '3.3'
 services:
   redis:
     build: .
-    image: com.ragedunicorn/redis:1.0-dev
+    image: ragedunicorn/redis:1.0.0-dev
     volumes:
       - redis_data:/data
     ports:

@@ -6,7 +6,7 @@
 set -o nounset
 
 # variable setup
-DOCKER_REDIS_TAG="com.ragedunicorn/redis"
+DOCKER_REDIS_TAG="ragedunicorn/redis"
 DOCKER_REDIS_NAME="redis"
 DOCKER_REDIS_DATA_VOLUME="redis_data"
 
