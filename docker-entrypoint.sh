@@ -15,13 +15,13 @@ redis_secret="/run/secrets/com.ragedunicorn.redis.password"
 # if secret is set update configuration accordingly
 if [ -f "${redis_secret}" ]; then
   # track whether init process was already done
-  if [ ! -f "${redis_home}"/.init ]; then
+  if [ ! -f "${redis_home}/.init" ]; then
     echo "$(date) [INFO]: Set password for redis database using ${redis_secret}"
     if ! sed -i -e "s/# requirepass .*/requirepass \"$(cat ${redis_secret})\"/g" "${redis_conf}"; then
       echo "$(date) [ERROR]: Failed to set password for redis database"
       exit 1
     else
-      touch "${redis_home}"/.init
+      touch "${redis_home}/.init"
       echo "$(date) [INFO]: Successfully set redis database password"
     fi
   fi
