@@ -28,6 +28,7 @@ ENV \
 RUN addgroup -S "${REDIS_USER}" -g 9999 && adduser -S -G "${REDIS_USER}" -u 9999 "${REDIS_USER}"
 
 RUN \
+  set -ex; \
   apk add --no-cache su-exec="${SU_EXEC_VERSION}"
 
 RUN \
