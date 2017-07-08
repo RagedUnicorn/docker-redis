@@ -4,33 +4,18 @@
 
 This container is intended to build a base for providing a Redis database to an application stack.
 
+
 ### Start container
 
 The container can be easily started with `docker-compose` command.
 
-Note that the container itself won't be very useful by itself. The default port `6379` is only
+**Note:** that the container itself won't be very useful by itself. The default port `6379` is only
 exposed to linked containers. Meaning a connection with a client to the database is not possible with the default configuration.
 
 ```
 docker-compose up -d
 ```
 
-**Note:** You will get a warning that external secrets are not supported by docker-compose. The container will ignore this and setup redis unprotected. For a production deployment a stack should be deployed. The secret will then be taken into account and redis will be setup accordingly. You can also set a password in `config/redis.conf requirepass` but this is not recommended for production.
-
-Join a swarm
-```
-docker swarm init
-```
-
-Setup docker secret for the service
-```
-echo "some_password" | docker secret create com.ragedunicorn.redis.password -
-```
-
-Deploy stack
-```
-docker stack deploy --compose-file=docker-compose.yml [stackname]
-```
 
 ### Stop container
 
@@ -40,9 +25,37 @@ To stop all services from the docker-compose file
 docker-compose down
 ```
 
+### Creating a stack
+
+To create a stack the specific `docker-compose.stack.yml` file can be used. It requires that you already built the image that is consumed by the stack or that it is available in a reachable docker repository.
+
+```
+docker-compose build --no-cache
+```
+
+**Note:** You will get a warning that external secrets are not supported by docker-compose if you try to use this file with docker-compose.
+
+#### Join a swarm
+
+```
+docker swarm init
+```
+
+#### Create secrets
+```
+echo "some_password" | docker secret create com.ragedunicorn.redis.password -
+```
+
+#### Deploy stack
+```
+docker stack deploy --compose-file=docker-compose.stack.yml [stackname]
+```
+
+For a production deployment a stack should be deployed. The secret will then be taken into account and redis will be setup accordingly. You can also set a password in `config/redis.conf requirepass` but this is not recommended for production.
+
 ## Dockery
 
-In the dockery folder are some scripts that help out avoiding retyping long docker commands but are mostly intended for playing around with the container. For production use docker-compose should be used.
+In the dockery folder are some scripts that help out avoiding retyping long docker commands but are mostly intended for playing around with the container. For production use docker-compose or docker stack should be used.
 
 #### Build image
 
@@ -80,7 +93,7 @@ sh dockery/dstop.sh
 
 Most of the configuration can be changed in the `redis.conf` configuration file. The configuration is copied into the container on buildtime. After a change to the file the container must be rebuilt.
 
-## persistence
+## Persistence
 
 With the default `redis.conf` basic snapshotting is activated and saved to `/data` as a volume.
 To configure this in more depth see `config/redis.conf` and modify snapshotting and append only mode.
@@ -98,8 +111,6 @@ docker-compose -f docker-compose.dev.yml up -d
 ```
 
 By default the launchscript `/docker-entrypoint.sh` will not be used to start the Redis process. Instead the container will be setup to keep `stdin_open` open and allocating a pseudo `tty`. This allows for connecting to a shell and work on the container. A shell can be opened inside the container with `docker attach [container-id]`. Redis itself can be started with `./docker-entrypoint.sh (?user) (?config-path)`.
-
-
 
 ## Links
 
