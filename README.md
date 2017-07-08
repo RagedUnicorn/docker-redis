@@ -90,14 +90,16 @@ For a full explanation see the redis documentation for persistence
 
 ## Development
 
-To debug the container and get more insight into the container use the `docker-compose-dev.yml`
+To debug the container and get more insight into the container use the `docker-compose.dev.yml`
 configuration. This will also allow external clients to connect to the database. By default the port `6379` will be publicly exposed.
 
 ```
-docker-compose -f docker-compose-dev.yml up -d
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
-By default the launchscript `/docker-entrypoint.sh` will not be used to start the Redis process. Instead the container will be setup to keep `stdin_open` open and allocating a pseudo `tty`. This allows for connecting to a shell and work on the container. Redis itself can be started with `./docker-entrypoint.sh [user] [config-path]`.
+By default the launchscript `/docker-entrypoint.sh` will not be used to start the Redis process. Instead the container will be setup to keep `stdin_open` open and allocating a pseudo `tty`. This allows for connecting to a shell and work on the container. A shell can be opened inside the container with `docker attach [container-id]`. Redis itself can be started with `./docker-entrypoint.sh (?user) (?config-path)`.
+
+
 
 ## Links
 
