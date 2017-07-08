@@ -5,7 +5,9 @@
 This container is intended to build a base for providing a Redis database to an application stack.
 
 
-### Start container
+### Using the image
+
+#### Start container
 
 The container can be easily started with `docker-compose` command.
 
@@ -17,7 +19,7 @@ docker-compose up -d
 ```
 
 
-### Stop container
+#### Stop container
 
 To stop all services from the docker-compose file
 
