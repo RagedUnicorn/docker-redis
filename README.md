@@ -105,8 +105,7 @@ For a full explanation see the redis documentation for persistence
 
 ## Development
 
-To debug the container and get more insight into the container use the `docker-compose.dev.yml`
-configuration. This will also allow external clients to connect to the database. By default the port `6379` will be publicly exposed.
+To debug the container and get more insight into the container use the `docker-compose.dev.yml` configuration. This will also allow external clients to connect to the database. By default the port `6379` will be publicly exposed.
 
 ```
 docker-compose -f docker-compose.dev.yml up -d
