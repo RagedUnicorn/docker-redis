@@ -5,6 +5,8 @@
 # abort when trying to use unset variable
 set -o nounset
 
+WD="${PWD}"
+
 # variable setup
 DOCKER_REDIS_TAG="ragedunicorn/redis"
 DOCKER_REDIS_NAME="redis"
@@ -28,3 +30,5 @@ else
   echo "$(date) [INFO]: Creating new volume: ${DOCKER_REDIS_DATA_VOLUME}"
   docker volume create --name "${DOCKER_REDIS_DATA_VOLUME}" > /dev/null
 fi
+
+cd "${WD}"

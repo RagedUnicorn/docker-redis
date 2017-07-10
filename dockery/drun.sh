@@ -5,6 +5,8 @@
 # abort when trying to use unset variable
 set -o nounset
 
+WD="${PWD}"
+
 # variable setup
 DOCKER_REDIS_TAG="ragedunicorn/redis"
 DOCKER_REDIS_NAME="redis"
@@ -38,3 +40,5 @@ if [ $? -eq 0 ]; then
 else
   echo "$(date) [ERROR]: Failed to start container - ${DOCKER_REDIS_NAME}"
 fi
+
+cd "${WD}"
