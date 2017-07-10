@@ -24,10 +24,12 @@ if [ $? -eq 0 ]; then
   docker start "${DOCKER_REDIS_NAME}"
 else
   ## run image:
+  # -p expose port
   # -d run in detached mode
   # -v mount a volume
   # --name define a name for the container(optional)
   DOCKER_REDIS_ID=$(docker run \
+  -p 8081:8081 \
   -d \
   -v redis_data:/data \
   --name "${DOCKER_REDIS_NAME}" "${DOCKER_REDIS_TAG}")
