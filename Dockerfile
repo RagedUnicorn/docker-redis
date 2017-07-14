@@ -21,11 +21,12 @@ ENV \
 
 ENV \
   REDIS_USER=redis \
+  REDIS_GROUP=redis \
   REDIS_DATA_DIR=/data \
   REDIS_SHASUM=8fad759f28bcb14b94254124d824f1f3ed7b6aa6
 
 # explicitly set user/group IDs
-RUN addgroup -S "${REDIS_USER}" -g 9999 && adduser -S -G "${REDIS_USER}" -u 9999 "${REDIS_USER}"
+RUN addgroup -S "${REDIS_GROUP}" -g 9999 && adduser -S -G "${REDIS_GROUP}" -u 9999 "${REDIS_USER}"
 
 RUN \
   set -ex; \
@@ -55,9 +56,10 @@ COPY docker-entrypoint.sh /
 COPY config/redis.conf /usr/local/etc/redis/redis.conf
 
 RUN \
-  mkdir "${REDIS_DATA_DIR}" && chown "${REDIS_USER}":"${REDIS_USER}" "${REDIS_DATA_DIR}"; \
+  mkdir "${REDIS_DATA_DIR}"; \
+  chown "${REDIS_USER}":"${REDIS_GROUP}" "${REDIS_DATA_DIR}"; \
   chmod 644 /usr/local/etc/redis/redis.conf; \
-  chown "${REDIS_USER}" /usr/local/etc/redis/redis.conf; \
+  chown "${REDIS_USER}":"${REDIS_GROUP}" /usr/local/etc/redis/redis.conf; \
   chmod 755 docker-entrypoint.sh
 
 EXPOSE 6379
