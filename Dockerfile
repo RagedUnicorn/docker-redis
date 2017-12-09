@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gmail.com>" \
   com.ragedunicorn.version="1.0"
@@ -13,11 +13,11 @@ LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gm
 ENV \
   REDIS_VERSION=3.2.9 \
   SU_EXEC_VERSION=0.2-r0 \
-  COREUTILS_VERSION=8.27-r0 \
-  GCC_VERSION=6.3.0-r4 \
+  COREUTILS_VERSION=8.28-r0 \
+  GCC_VERSION=6.4.0-r5 \
   LINUX_HEADERS_VERSION=4.4.6-r2 \
   MAKE_VERSION=4.2.1-r0 \
-  MUSL_DEV_VERSION=1.1.16-r13
+  MUSL_DEV_VERSION=1.1.18-r2
 
 ENV \
   REDIS_USER=redis \
