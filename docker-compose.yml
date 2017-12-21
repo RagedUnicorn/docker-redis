@@ -2,7 +2,7 @@ version: '3.4'
 services:
   redis:
     build: .
-    image: ragedunicorn/redis:1.0.2-stable
+    image: ragedunicorn/redis:1.0.3-stable
     volumes:
       - redis_data:/data
     expose:
