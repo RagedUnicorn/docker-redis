@@ -53,6 +53,8 @@ RUN \
 COPY docker-entrypoint.sh /
 # add redis conf
 COPY config/redis.conf /usr/local/etc/redis/redis.conf
+# add healthcheck script
+COPY scripts/healthcheck.sh /usr/local/bin/
 
 RUN \
   mkdir "${REDIS_DATA_DIR}"; \

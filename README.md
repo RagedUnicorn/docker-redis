@@ -18,7 +18,6 @@ exposed to linked containers. Meaning a connection with a client to the database
 docker-compose up -d
 ```
 
-
 #### Stop container
 
 To stop all services from the docker-compose file
@@ -102,6 +101,18 @@ To configure this in more depth see `config/redis.conf` and modify snapshotting 
 
 For a full explanation see the redis documentation for persistence
 - https://redis.io/topics/persistence
+
+## Healthcheck
+
+The production and the stack image supports a simple healthcheck whether the container is healthy or not. This can be configured inside `docker-compose.yml` or `docker-compose.stack.yml`
+
+Containers that depend on this container can make sure that this container is up and running before starting up themselves.
+
+```
+depends_on:
+  redis:
+    condition: service_healthy
+```
 
 ## Development
 
