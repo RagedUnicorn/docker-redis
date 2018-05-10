@@ -26,8 +26,7 @@ if [ -f "${redis_secret}" ]; then
     fi
   fi
 else
-  echo "$(date) [WARNING]: Unable to find password or no password set. Starting redis without password \
-  protection."
+  echo "$(date) [WARNING]: Unable to find password or no password set. Starting redis without password protection."
 fi
 
 if [ -n "${param1}" ]; then
