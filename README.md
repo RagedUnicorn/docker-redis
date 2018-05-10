@@ -1,11 +1,16 @@
 # docker-redis
 
-> A docker base to build a container for Redis based on Alpine Linux
+> A docker base image to build a container for Redis based on Alpine Linux
 
-This container is intended to build a base for providing a Redis database to an application stack.
+This image is intended to build a base for providing a Redis database to an application stack.
 
+## Version
 
-### Using the image
+* Redis 4
+
+For an exact version see `Dockerfile`
+
+## Using the image
 
 #### Start container
 
