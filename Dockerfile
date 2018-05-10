@@ -10,7 +10,7 @@ LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gm
 
 # software versions
 ENV \
-  REDIS_VERSION=3.2.9 \
+  REDIS_VERSION=4.0.9 \
   SU_EXEC_VERSION=0.2-r0 \
   COREUTILS_VERSION=8.28-r0 \
   GCC_VERSION=6.4.0-r5 \
@@ -22,7 +22,7 @@ ENV \
   REDIS_USER=redis \
   REDIS_GROUP=redis \
   REDIS_DATA_DIR=/data \
-  REDIS_SHASUM=8fad759f28bcb14b94254124d824f1f3ed7b6aa6
+  REDIS_SHASUM=8aa33d13c3ff5c4d4d2cc52932340893132c8aec
 
 # explicitly set user/group IDs
 RUN addgroup -S "${REDIS_GROUP}" -g 9999 && adduser -S -G "${REDIS_GROUP}" -u 9999 "${REDIS_USER}"
