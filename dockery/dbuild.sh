@@ -18,7 +18,7 @@ cd "${SCRIPTPATH}"
 
 echo "$(date) [INFO]: Building container: ${DOCKER_REDIS_NAME}"
 
-# build mysql container
+# build redis container
 docker build -t "${DOCKER_REDIS_TAG}" ../
 
 # check if redis data volume already exists
