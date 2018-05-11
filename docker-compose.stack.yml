@@ -6,6 +6,8 @@ services:
       - redis_data:/data
     secrets:
         - com.ragedunicorn.redis.password
+    expose:
+      - "6379"
     healthcheck:
       test: ["CMD", "/usr/local/bin/healthcheck.sh"]
       interval: 1m
