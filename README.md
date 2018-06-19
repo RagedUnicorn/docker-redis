@@ -111,6 +111,14 @@ For a full explanation see the redis documentation for persistence
 
 The production and the stack image supports a simple healthcheck whether the container is healthy or not. This can be configured inside `docker-compose.yml` or `docker-compose.stack.yml`
 
+## Test
+
+To do basic tests of the structure of the container use the `docker-compose.test.yml` file.
+
+`docker-compose -f docker-compose.test.yml up`
+
+For more info see [container-test](https://github.com/RagedUnicorn/docker-container-test).
+
 ## Development
 
 To debug the container and get more insight into the container use the `docker-compose.dev.yml` configuration. This will also allow external clients to connect to the database. By default the port `6379` will be publicly exposed.

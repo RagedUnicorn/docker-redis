@@ -1,0 +1,12 @@
+schemaVersion: 2.0.0
+
+commandTests:
+- name: 'redis_cmd'
+  command: "/usr/local/bin/redis-cli"
+  expectedError: ["Could not connect to Redis at 127.0.0.1:6379: Connection refused"]
+  exitCode: 0
+- name: 'redis_version'
+  command: "/usr/local/bin/redis-cli"
+  args: ["-v"]
+  expectedOutput: ["redis-cli 4.0.9"]
+  exitCode: 0

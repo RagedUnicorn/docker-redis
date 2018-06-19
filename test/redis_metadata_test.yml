@@ -1,0 +1,17 @@
+schemaVersion: 2.0.0
+
+metadataTest:
+  env:
+    - key: 'REDIS_USER'
+      value: 'redis'
+    - key: 'REDIS_GROUP'
+      value: 'redis'
+    - key: 'REDIS_DATA_DIR'
+      value: '/data'
+    - key: 'REDIS_SHASUM'
+      value: '8aa33d13c3ff5c4d4d2cc52932340893132c8aec'
+  labels:
+    - key: 'com.ragedunicorn.maintainer'
+      value: 'Michael Wiesendanger <michael.wiesendanger@gmail.com>'
+  exposedPorts: ["6379"]
+  entrypoint: ["/docker-entrypoint.sh"]
