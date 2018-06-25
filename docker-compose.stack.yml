@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   redis:
-    image: ragedunicorn/redis:1.0.4-stable
+    image: ragedunicorn/redis:${REDIS_TAG_VERSION}-stable
     volumes:
       - redis_data:/data
     secrets:

@@ -2,7 +2,7 @@ version: '3.4'
 services:
   redis:
     build: .
-    image: ragedunicorn/redis:1.0.4-dev
+    image: ragedunicorn/redis:${REDIS_TAG_VERSION}-dev
     volumes:
       - redis_data:/data
     ports:

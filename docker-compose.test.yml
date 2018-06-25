@@ -1,56 +1,56 @@
 version: '3.6'
 services:
   container-test:
-    image: ragedunicorn/container-test:1.0.0-stable
+    image: ragedunicorn/container-test:${CONTAINER_STRUCTURE_TEST_VERSION}-stable
     volumes:
         - ./test/:/test
         - /var/run/docker.sock:/var/run/docker.sock
-    command: ["--image", "ragedunicorn/redis:1.0.4-stable", "--config", "/test/redis_test.yml"]
+    command: ["--image", "ragedunicorn/redis:${REDIS_TAG_VERSION}-stable", "--config", "/test/redis_test.yml"]
     labels:
       com.ragedunicorn.container-test.environment: "test"
       com.ragedunicorn.container-test.description: "Google Container Structure Test"
   container-test-metadata:
-    image: ragedunicorn/container-test:1.0.0-stable
+    image: ragedunicorn/container-test:${CONTAINER_STRUCTURE_TEST_VERSION}-stable
     volumes:
         - ./test/:/test
         - /var/run/docker.sock:/var/run/docker.sock
-    command: ["--image", "ragedunicorn/redis:1.0.4-stable", "--config", "/test/redis_metadata_test.yml"]
+    command: ["--image", "ragedunicorn/redis:${REDIS_TAG_VERSION}-stable", "--config", "/test/redis_metadata_test.yml"]
     labels:
       com.ragedunicorn.container-test.environment: "test"
       com.ragedunicorn.container-test.description: "Google Container Structure Test"
   container-test-command:
-    image: ragedunicorn/container-test:1.0.0-stable
+    image: ragedunicorn/container-test:${CONTAINER_STRUCTURE_TEST_VERSION}-stable
     volumes:
         - ./test/:/test
         - /var/run/docker.sock:/var/run/docker.sock
-    command: ["--image", "ragedunicorn/redis:1.0.4-stable", "--config", "/test/redis_command_test.yml"]
+    command: ["--image", "ragedunicorn/redis:${REDIS_TAG_VERSION}-stable", "--config", "/test/redis_command_test.yml"]
     labels:
       com.ragedunicorn.container-test.environment: "test"
       com.ragedunicorn.container-test.description: "Google Container Structure Test"
   container-dev-test:
-    image: ragedunicorn/container-test:1.0.0-stable
+    image: ragedunicorn/container-test:${CONTAINER_STRUCTURE_TEST_VERSION}-stable
     volumes:
         - ./test/:/test
         - /var/run/docker.sock:/var/run/docker.sock
-    command: ["--image", "ragedunicorn/redis:1.0.4-dev", "--config", "/test/redis_test.yml"]
+    command: ["--image", "ragedunicorn/redis:${REDIS_TAG_VERSION}-dev", "--config", "/test/redis_test.yml"]
     labels:
       com.ragedunicorn.container-test.environment: "test"
       com.ragedunicorn.container-test.description: "Google Container Structure Test"
   container-dev-test-metadata:
-    image: ragedunicorn/container-test:1.0.0-stable
+    image: ragedunicorn/container-test:${CONTAINER_STRUCTURE_TEST_VERSION}-stable
     volumes:
         - ./test/:/test
         - /var/run/docker.sock:/var/run/docker.sock
-    command: ["--image", "ragedunicorn/redis:1.0.4-dev", "--config", "/test/redis_metadata_test.yml"]
+    command: ["--image", "ragedunicorn/redis:${REDIS_TAG_VERSION}-dev", "--config", "/test/redis_metadata_test.yml"]
     labels:
       com.ragedunicorn.container-test.environment: "test"
       com.ragedunicorn.container-test.description: "Google Container Structure Test"
   container-dev-test-command:
-    image: ragedunicorn/container-test:1.0.0-stable
+    image: ragedunicorn/container-test:${CONTAINER_STRUCTURE_TEST_VERSION}-stable
     volumes:
         - ./test/:/test
         - /var/run/docker.sock:/var/run/docker.sock
-    command: ["--image", "ragedunicorn/redis:1.0.4-dev", "--config", "/test/redis_command_test.yml"]
+    command: ["--image", "ragedunicorn/redis:${REDIS_TAG_VERSION}-dev", "--config", "/test/redis_command_test.yml"]
     labels:
       com.ragedunicorn.container-test.environment: "test"
       com.ragedunicorn.container-test.description: "Google Container Structure Test"
