@@ -99,6 +99,37 @@ sh dockery/dstop.sh
 
 Most of the configuration can be changed in the `redis.conf` configuration file. The configuration is copied into the container on buildtime. After a change to the file the container must be rebuilt.
 
+### Changing Data Directory
+
+The data directory can be overwritten by changing the `REDIS_DATA_DIR` environmental variable. Additionally to changing this variable the same folder needs to be set in the `redis.conf` configuration.
+
+Search for `working directory` and change the dir value to the same as the environment variable.
+
+```
+dir /data
+```
+
+To check whether the data directory is working as expected startup the redis server and the shut it down. If redis complains about not being able to shutdown because it cannot save the dump double check the paths.
+
+```
+Saving the final RDB snapshot before exiting.
+Failed opening the RDB file dump.rdb (in server root dir /) for saving: Permission denied
+Error trying to save the DB, can't exit.
+SIGTERM received but errors trying to shut down the server, check the logs for more information
+```
+
+While a successfully configured working directory shutdown looks like this.
+
+```
+User requested shutdown...
+Saving the final RDB snapshot before exiting.
+DB saved on disk
+Removing the pid file.
+Redis is now ready to exit, bye bye...
+```
+
+Checking the configured data directory should contain a file called `dump.rdb`.
+
 ## Persistence
 
 With the default `redis.conf` basic snapshotting is activated and saved to `/data` as a volume.
