@@ -57,19 +57,22 @@ RUN \
   rm -r /usr/src/redis; \
   apk del .build-deps
 
-# add launch script
-COPY docker-entrypoint.sh /
 # add redis conf
 COPY config/redis.conf /usr/local/etc/redis/redis.conf
+
+# add launch script
+COPY docker-entrypoint.sh /
+
 # add healthcheck script
-COPY scripts/healthcheck.sh /usr/local/bin/
+COPY docker-healthcheck.sh /
 
 RUN \
   mkdir "${REDIS_DATA_DIR}"; \
   chown "${REDIS_USER}":"${REDIS_GROUP}" "${REDIS_DATA_DIR}"; \
   chmod 644 /usr/local/etc/redis/redis.conf; \
   chown "${REDIS_USER}":"${REDIS_GROUP}" /usr/local/etc/redis/redis.conf; \
-  chmod 755 docker-entrypoint.sh
+  chmod 755 docker-entrypoint.sh && \
+  chmod 755 docker-healthcheck.sh
 
 EXPOSE 6379
 

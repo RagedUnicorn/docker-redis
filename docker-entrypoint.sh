@@ -26,10 +26,6 @@ function init {
       redis_app_password="${REDIS_APP_PASSWORD?Missing environment variable REDIS_APP_PASSWORD}"
     fi
 
-    if [ ! -z "${REDIS_APP_PASSWORD+x}" ]; then
-      unset "${REDIS_APP_PASSWORD}"
-    fi
-
     if sed -i -e "s/# requirepass .*/requirepass \"${redis_app_password}\"/g" "${REDIS_CONF}"; then
       touch "${REDIS_HOME}/.init"
       echo "$(date) [INFO]: Successfully set redis database password"
