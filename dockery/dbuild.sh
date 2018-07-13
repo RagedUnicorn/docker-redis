@@ -2,7 +2,6 @@
 # @author Michael Wiesendanger <michael.wiesendanger@gmail.com>
 # @description build script for docker-redis container
 
-# abort when trying to use unset variable
 set -euo pipefail
 
 WD="${PWD}"
