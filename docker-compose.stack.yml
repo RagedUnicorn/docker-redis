@@ -5,7 +5,7 @@ services:
     volumes:
       - redis_data:/data
     secrets:
-        - com.ragedunicorn.redis.password
+        - com.ragedunicorn.redis.app_password
     healthcheck:
       test: ["CMD", "/usr/local/bin/healthcheck.sh"]
       interval: 1m
@@ -17,5 +17,5 @@ services:
 volumes:
   redis_data: {}
 secrets:
-  com.ragedunicorn.redis.password:
+  com.ragedunicorn.redis.app_password:
     external: true

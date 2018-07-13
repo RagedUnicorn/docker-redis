@@ -8,6 +8,11 @@ LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gm
 #  / _, _/  __/ /_/ / (__  )
 # /_/ |_|\___/\__,_/_/____/
 
+# image args
+ARG REDIS_USER=redis
+ARG REDIS_GROUP=redis
+ARG REDIS_APP_PASSWORD=app
+
 # software versions
 ENV \
   REDIS_VERSION=4.0.9 \
@@ -19,9 +24,12 @@ ENV \
   MUSL_DEV_VERSION=1.1.18-r3
 
 ENV \
-  REDIS_USER=redis \
-  REDIS_GROUP=redis \
+  REDIS_USER="${REDIS_USER}" \
+  REDIS_GROUP="${REDIS_GROUP}" \
+  REDIS_APP_PASSWORD="${REDIS_APP_PASSWORD}" \
   REDIS_DATA_DIR=/data \
+  REDIS_HOME=/usr/local/etc/redis \
+  REDIS_CONF=/usr/local/etc/redis/redis.conf \
   REDIS_SHASUM=8aa33d13c3ff5c4d4d2cc52932340893132c8aec
 
 # explicitly set user/group IDs
