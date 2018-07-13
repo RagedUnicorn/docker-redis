@@ -99,6 +99,14 @@ sh dockery/dstop.sh
 
 Most of the configuration can be changed in the `redis.conf` configuration file. The configuration is copied into the container on buildtime. After a change to the file the container must be rebuilt.
 
+## Persistence
+
+With the default `redis.conf` basic snapshotting is activated and saved to `/data` as a volume.
+To configure this in more depth see `config/redis.conf` and modify snapshotting and append only mode.
+
+For a full explanation see the redis documentation for persistence
+- https://redis.io/topics/persistence
+
 ### Changing Data Directory
 
 The data directory can be overwritten by changing the `REDIS_DATA_DIR` environmental variable. Additionally to changing this variable the same folder needs to be set in the `redis.conf` configuration.
@@ -130,13 +138,7 @@ Redis is now ready to exit, bye bye...
 
 Checking the configured data directory should contain a file called `dump.rdb`.
 
-## Persistence
-
-With the default `redis.conf` basic snapshotting is activated and saved to `/data` as a volume.
-To configure this in more depth see `config/redis.conf` and modify snapshotting and append only mode.
-
-For a full explanation see the redis documentation for persistence
-- https://redis.io/topics/persistence
+**Note:** Also make sure to update any docker-compose files and their volumes accordingly.
 
 ## Healthcheck
 
