@@ -3,7 +3,7 @@
 # @description run script for docker-redis container
 
 # abort when trying to use unset variable
-set -o nounset
+set -euo pipefail
 
 WD="${PWD}"
 
