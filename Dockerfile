@@ -71,8 +71,8 @@ RUN \
   chown "${REDIS_USER}":"${REDIS_GROUP}" "${REDIS_DATA_DIR}"; \
   chmod 644 /usr/local/etc/redis/redis.conf; \
   chown "${REDIS_USER}":"${REDIS_GROUP}" /usr/local/etc/redis/redis.conf; \
-  chmod 755 docker-entrypoint.sh && \
-  chmod 755 docker-healthcheck.sh
+  chmod 755 /docker-entrypoint.sh && \
+  chmod 755 /docker-healthcheck.sh
 
 EXPOSE 6379
 
