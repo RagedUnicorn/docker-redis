@@ -99,6 +99,14 @@ sh dockery/dstop.sh
 
 Most of the configuration can be changed in the `redis.conf` configuration file. The configuration is copied into the container on buildtime. After a change to the file the container must be rebuilt.
 
+#### Build Args
+
+The image allows for certain arguments being overridden by build args.
+
+`REDIS_USER, REDIS_GROUP, REDIS_APP_PASSWORD`
+
+They all have a default value and don't have to be overridden. For details see the Dockerfile.
+
 ## Persistence
 
 With the default `redis.conf` basic snapshotting is activated and saved to `/data` as a volume.
