@@ -47,7 +47,10 @@ RUN \
     linux-headers="${LINUX_HEADERS_VERSION}" \
     make="${MAKE_VERSION}" \
     musl-dev="${MUSL_DEV_VERSION}"; \
-  wget -O redis.tar.gz http://download.redis.io/releases/redis-"${REDIS_VERSION}".tar.gz; \
+  if ! wget -O redis.tar.gz http://download.redis.io/releases/redis-"${REDIS_VERSION}".tar.gz; then \
+    echo >&2 "Error: Failed to download Redis binary"; \
+    exit 1; \
+  fi && \
   echo "${REDIS_SHASUM} *redis.tar.gz" | sha1sum -c -; \
   mkdir -p /usr/src/redis; \
   tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1; \
