@@ -46,18 +46,18 @@ RUN \
     gcc="${GCC_VERSION}" \
     linux-headers="${LINUX_HEADERS_VERSION}" \
     make="${MAKE_VERSION}" \
-    musl-dev="${MUSL_DEV_VERSION}"; \
+    musl-dev="${MUSL_DEV_VERSION}" && \
   if ! wget -O redis.tar.gz http://download.redis.io/releases/redis-"${REDIS_VERSION}".tar.gz; then \
     echo >&2 "Error: Failed to download Redis binary"; \
     exit 1; \
   fi && \
-  echo "${REDIS_SHASUM} *redis.tar.gz" | sha1sum -c -; \
-  mkdir -p /usr/src/redis; \
-  tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1; \
-  rm redis.tar.gz; \
-  make -C /usr/src/redis -j "$(nproc)"; \
-  make -C /usr/src/redis install; \
-  rm -r /usr/src/redis; \
+  echo "${REDIS_SHASUM} *redis.tar.gz" | sha1sum -c - && \
+  mkdir -p /usr/src/redis && \
+  tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1 && \
+  rm redis.tar.gz && \
+  make -C /usr/src/redis -j "$(nproc)" && \
+  make -C /usr/src/redis install && \
+  rm -r /usr/src/redis && \
   apk del .build-deps
 
 # add redis conf
@@ -70,10 +70,10 @@ COPY docker-entrypoint.sh /
 COPY docker-healthcheck.sh /
 
 RUN \
-  mkdir "${REDIS_DATA_DIR}"; \
-  chown "${REDIS_USER}":"${REDIS_GROUP}" "${REDIS_DATA_DIR}"; \
-  chmod 644 /usr/local/etc/redis/redis.conf; \
-  chown "${REDIS_USER}":"${REDIS_GROUP}" /usr/local/etc/redis/redis.conf; \
+  mkdir "${REDIS_DATA_DIR}" && \
+  chown "${REDIS_USER}":"${REDIS_GROUP}" "${REDIS_DATA_DIR}" && \
+  chmod 644 /usr/local/etc/redis/redis.conf && \
+  chown "${REDIS_USER}":"${REDIS_GROUP}" /usr/local/etc/redis/redis.conf && \
   chmod 755 /docker-entrypoint.sh && \
   chmod 755 /docker-healthcheck.sh
 
