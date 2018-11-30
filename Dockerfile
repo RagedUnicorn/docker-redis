@@ -15,10 +15,10 @@ ARG REDIS_APP_PASSWORD=app
 
 # software versions
 ENV \
-  REDIS_VERSION=4.0.9 \
+  REDIS_VERSION=4.0.11 \
   SU_EXEC_VERSION=0.2-r0 \
   COREUTILS_VERSION=8.29-r2 \
-  GCC_VERSION=6.4.0-r8 \
+  GCC_VERSION=6.4.0-r9 \
   LINUX_HEADERS_VERSION=4.4.6-r2 \
   MAKE_VERSION=4.2.1-r2 \
   MUSL_DEV_VERSION=1.1.19-r10
@@ -30,7 +30,7 @@ ENV \
   REDIS_DATA_DIR=/data \
   REDIS_HOME=/usr/local/etc/redis \
   REDIS_CONF=/usr/local/etc/redis/redis.conf \
-  REDIS_SHASUM=8aa33d13c3ff5c4d4d2cc52932340893132c8aec
+  REDIS_SHASUM=a13ccf0f7051f82dc1c979bd94f0b9a9ba039122
 
 # explicitly set user/group IDs
 RUN addgroup -S "${REDIS_GROUP}" -g 9999 && adduser -S -G "${REDIS_GROUP}" -u 9999 "${REDIS_USER}"

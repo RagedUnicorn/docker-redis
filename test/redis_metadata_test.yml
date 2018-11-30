@@ -9,7 +9,7 @@ metadataTest:
     - key: 'REDIS_DATA_DIR'
       value: '/data'
     - key: 'REDIS_SHASUM'
-      value: '8aa33d13c3ff5c4d4d2cc52932340893132c8aec'
+      value: 'a13ccf0f7051f82dc1c979bd94f0b9a9ba039122'
   labels:
     - key: 'com.ragedunicorn.maintainer'
       value: 'Michael Wiesendanger <michael.wiesendanger@gmail.com>'

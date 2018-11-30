@@ -13,5 +13,5 @@ commandTests:
 - name: 'redis_version'
   command: "/usr/local/bin/redis-cli"
   args: ["-v"]
-  expectedOutput: ["redis-cli 4.0.9"]
+  expectedOutput: ["redis-cli 4.0.11"]
   exitCode: 0
