@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.7'
 services:
   redis:
     image: ragedunicorn/redis:1.0.7-stable
