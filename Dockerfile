@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.9.2
 
 LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gmail.com>"
 
@@ -17,11 +17,11 @@ ARG REDIS_APP_PASSWORD=app
 ENV \
   REDIS_VERSION=4.0.11 \
   SU_EXEC_VERSION=0.2-r0 \
-  COREUTILS_VERSION=8.29-r2 \
-  GCC_VERSION=6.4.0-r9 \
-  LINUX_HEADERS_VERSION=4.4.6-r2 \
+  COREUTILS_VERSION=8.30-r0 \
+  GCC_VERSION=8.2.0-r2 \
+  LINUX_HEADERS_VERSION=4.18.13-r1 \
   MAKE_VERSION=4.2.1-r2 \
-  MUSL_DEV_VERSION=1.1.19-r10
+  MUSL_DEV_VERSION=1.1.20-r3
 
 ENV \
   REDIS_USER="${REDIS_USER}" \
